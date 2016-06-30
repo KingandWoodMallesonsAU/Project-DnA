@@ -1,0 +1,129 @@
+#+BEGIN_IRS
+
+{- Interest Rate Swap
+
+-- Declarations
+These Digital Terms and the Analogue Terms referred to in the document entitled “Interest Rate Swap – Smart Contract Confirmation" identifiable by the following hash XXXXXXXXXXXXXXXXXXXX ("Smart Contract Confirmation")together constitute the terms of a fixed/floating interest rate swap transaction (“Transaction”).
+
+This Transaction forms part of and is subject to the master agreement entered into by Party A and Party B on xx/xxxxx/x and identifiable by the following hash XXXXXXXXXXXXXXXXXXXX ("Master_Agreement").
+
+All provisions contained in the Master_Agreement govern this Transaction.
+
+		-}
+
+-- Import libraries
+
+import IRS_Definitions
+import KWM_Regtech 
+import data.time
+import data.reuters
+
+
+--Example Function.  This provides an example of how the Payable_Amount_Fixed term could be expressed computationally in the Digital Terms using date inputs from these Digital Terms
+
+Payable_Amount_Fixed =
+	if(Fixed_Payment_Date == 2016-09-01)
+		then ((Fixed_Day_Count_Fraction(Fixed_Payment_Date – Effective_Date)) * Fixed_Notional_Amount * Fixed_Rate)
+	else ((Fixed_Day_Count_Fraction(Fixed_Payment_Date – last.Fixed_Payment_Date)) * Fixed_Notional_Amount * Fixed_Rate)
+
+-- Inputs
+
+Party_A = new Party alias "ABC Bank Limited" (
+	idtype = ACN, ID = 123 456 789
+	Office = Sydney
+	Account_Details = ABC Bank Limited, Account no: 123456, Ref: ABCBank
+)
+
+Party_B = new Party alias "DEF Bank Limited" (
+	idtype = ACN, ID = 987 654 321
+	Office = Sydney
+	Account_Details = DEF Bank Limited, Account no: 987654, Ref: DEFBank
+)
+
+Instrument = Interest_Rate_Swap (
+
+	-- Relevant dates and options relating to dates
+	Business_Day_Convention = Following_Business_Day_Convention
+	Trade_Date = Business_Day_Convention(Unadjusted_Trade_Date)
+	Unadjusted_Trade_Date = date(2016-06-01)
+	Effective_Date = Trade_Date 
+	Termination_Date = Business_Day_Convention(Unadjusted_Termination_Date)
+	Unadjusted_Termination_Date = date(2017-06-01)
+	Calculation_Agent = Party_A
+
+	-- Fixed rate details
+	Fixed_Payer = Party_A
+	Fixed_Notional_Amount = 500000000
+	Fixed_Currency = AUD
+	Fixed_Payment_Date = Business_Day_Convention(Unadjusted_Fixed_Payment_Date)
+	Unadjusted_Fixed_Payment_Date = (2016-09-01, 2016-12-01, 2017-03-01, 2017-06-01)
+	Fixed_Rate = 0.035
+	Fixed_Day_Count_Fraction = Act_365_Fixed
+
+	-- Floating rate details
+	Floating_Payer = Party_B
+	Floating_Notional_Amount = Fixed_Notional_Amount
+	Floating_Currency = AUD
+	Floating_Payment_Date = Fixed_Payment_Date
+	Floating_Rate_Option = BBSW_Reuters
+		Designated_Maturity = (reuters, "3 Month")
+		Designated_Screen = (reuters, XXXXXXX)
+		Floating_Spread = 0.015
+		Floating_Day_Count_Fraction = Act_365_Fixed
+		Floating_Compounding = false
+		Reset_Date = if Floating_Payment_Date == 2016-09-01:
+				then Effective_Date
+				else last.Floating_Payment_Date
+)
+)
+
+
+-- Day 0 Calculations 
+
+ifEvent(Effective_Date){
+KWM.Clearing_Calculator(Party_A, Party_B, Instrument)
+KWM.Reporting_tool(Party_A, Party_B, Instrument)
+} 
+
+-- Payment date operations
+
+ifEvent (Floating_Payment_Date)
+	&& Floating_Payment_Date == Fixed_Payment_Date
+	&& Floating_Currency == Fixed_Currency
+	| Payable_Amount_Floating(Floating_Payment_Date) - Payable_Amount_Fixed(Fixed_Payment_Date) > 0:{
+		then Floating_Payer pays Fixed_Payer (Payable_Amount_Floating(Floating_Payment_Date) - Payable_Amount_Fixed(Fixed_Payment_Date))
+		} 
+	| Payable_Amount_Floating(Floating_Payment_Date) - Payable_Amount_Fixed(Fixed_Payment_Date) < 0:{
+		then Fixed_Payer pays Floating_Payer (Payable_Amount_Fixed(Fixed_Payment_Date) -Payable_Amount_Floating(Floating_Payment_Date))
+		}
+	| otherwise no payment
+
+
+
+elsifEvent (Floating_Payment_Date)
+	&& ((Floating_Payment_Date == Fixed_Payment_Date ) 
+	&& (Floating_Currency == Fixed_Currency) == False):{
+	then Floating_Payer pays Fixed_Payer Payable_Amount_Floating(Floating_Payment_Date)
+	}
+
+
+elsifEvent (Fixed_Payment_Date)
+	&& ((Floating_Payment_Date == Fixed_Payment_Date ) 
+	&& (Floating_Currency == Fixed_Currency) == False):{
+	then Fixed_Payer pays Floating_Payer Payable_Amount_Fixed(Fixed_Payment_Date)
+	}
+	
+
+{- Always on functions
+	These are used to force the contract to shift to the Smart Contract Confirmation
+	-}
+
+if Party_A emits(offramp)
+	then end
+	
+if Party_B emits(offramp)
+	then end	
+
+#+End_IRS
+
+Disclaimer:  Please note that the documents provided in the respository are sample documents for discussion purposes only and should not be used for actual transactions.  Nothing in any of these documents constitutes legal advice and KWM accepts no responsibility for their contents.
