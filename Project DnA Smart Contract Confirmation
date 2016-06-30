@@ -1,0 +1,69 @@
+INTEREST RATE SWAP – SMART CONTRACT CONFIRMATION
+
+Date:	{insert} (which can be the compile date automatically imported from the Digital Terms)
+
+Ref:	{insert hash which will be added into the Digital Terms}
+
+Parties:
+
+Party_A:			ABC Bank Limited (as imported from Digital Terms)
+Party_B:			DEF Bank Limited (as imported from Digital Terms)
+
+Transaction:
+
+Digital Terms:			digital terms with hash XXXXXXXXXXXXXXXXXXXX
+Transaction:			The Analogue Terms referred to in this document and the Digital Terms together constitute the terms of a fixed/floating interest rate swap between the Parties.
+Master_Agreement:		master agreement dated {date} between the Parties (as imported from the Digital Terms)
+
+
+This Transaction forms part of and is subject to, the Master_Agreement.  All provisions contained in the Master_Agreement govern this Transaction.  [Explanatory note: The terms of the Master_Agreement are Analogue Terms of this interest rate swap.]
+
+
+Dates:				
+
+Trade_Date:			{sets out date which is Business_Day_Convention(2016-06-01)} (as imported from Digital Terms)
+Effective_Date:			{sets out date which is Trade_Date} (as imported from Digital Terms)
+Termination_Date:		{sets out date which is Business_Day_Convention(2017-06-01)} (as imported from Digital Terms)
+
+
+Fixed_Amounts:
+	
+Fixed_Notional_Amount:		500000000 (as imported from Digital Terms)
+Fixed_Currency:			AUD (as imported from Digital Terms)
+Fixed_Payer:			ABC Bank Limited (as imported from Digital Terms)
+Fixed_Payment_Date:		{sets out dates which are Business_Day_Convention(Unadjusted_Fixed_Payment_Date), where Unadjusted_Fixed_Payment_Date = (2016-09-01, 2016-12-01, 2017-03-01, 2017-06-01)} (as imported from Digital Terms)
+Fixed_Rate:			0.035 (as imported from Digital Terms)
+Fixed_Day_Count_Fraction:	Act_365_Fixed (as imported from Digital Terms)
+	
+
+Floating_Amounts:
+	
+Floating_Notional_Amount:	500000000 (as imported from Digital Terms)
+Floating_Currency:		AUD (as imported from Digital Terms)
+Floating_Payer:			DEF Bank Limited (as imported from Digital Terms)
+Floating_Payment_Date:		{sets out dates which are Business_Day_Convention(Unadjusted_Fixed_Payment_Date), where Unadjusted_Fixed_Payment_Date = (2016-09-01, 2016-12-01, 2017-03-01, 2017-06-01)} (as imported from Digital Terms)
+Floating_Rate_Option:		BBSW_Reuters (as imported from Digital Terms)
+Designated_Maturity:		3 Months (as imported from Digital Terms)
+Floating_Spread:		0.015 (as imported from Digital Terms)
+Floating_Day_Count_Fraction:	Act_365_Fixed (as imported from Digital Terms)
+Reset_Date:			{sets out dates} (as imported from Digital Terms)
+Floating_Compounding:		false (as imported from Digital Terms)
+	
+
+Other:
+	
+Calculation_Agent:		Party_A (as imported from Digital Terms)
+Business_Day_Convention:	Following_Business_Day_Convention (as imported from Digital Terms)
+Party_A_Account_Details:	ABC Bank Limited, Account no: 123456, Ref: ABCBank (as imported from Digital Terms)
+Party_B_Account_Details:	DEF Bank Limited, Account no: 987654, Ref: DEFBank (as imported from Digital Terms)
+					
+Definitions:
+
+The definitions and provisions contained in the IRS_Definitions are incorporated into this document. [Explanatory note: Certain provisions in the IRS_Definitions are Analogue Terms of this interest rate swap.]
+Terms which are used but not defined in this document have the meaning given to them in the Digital Terms. 
+
+
+
+Disclaimer: Please note that the documents provided in the repository are sample documents for discussion purposes only and should not be used for actual transactions. Nothing in any of these documents constitutes legal advice and KWM accepts no responsibility for their contents.
+
+
