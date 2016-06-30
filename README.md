@@ -206,7 +206,7 @@ Whilst in the above, formal English does this by keeping that computation in its
 
 Think less `the Calculation Agent determines that there is an obvious error in that rate` and more `Calculation_Agent /= emit(error_rate)`: if the Calculation Agent does not state that the rate contains an error.
 
-They mean the same thing. One in words, the other in a formula. This turns the text into something that is (notionally) computable, though it should be translated into an appropriate language for its application. It goes without saying that it is critical to select the right coding language for this application and to ensure that the expressions used are watertight.
+This turns the text into something that is (notionally) computable, though it should be translated into an appropriate language for its application. It goes without saying that it is critical to select the right coding language for this application and to ensure that the expressions used are watertight.
 
 ```
 BBSW_Reuters (ResetDate) = 
