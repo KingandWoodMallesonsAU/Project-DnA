@@ -1,6 +1,6 @@
 # DnA Contracts
 
-*Project DnA is about creating an architecture for smart contracts based on the principle that digital terms and analogue terms should both be integrated into a contract so that it is both easily administered and infinitely expressive.*
+*Project DnA is about creating an architecture for smart contracts based on the principle that both digital terms and analogue terms should be integrated into a contract so that it is both easily administered and infinitely expressive.*
 
 If this is your first time here, consider having a look at our [alert](http://kwm.com/...) or our "10 points on financial market smart contracts" found [here](http://www.kwm.com/en/au/knowledge/insights/10-things-you-need-to-know-smart-contracts-20160630).
 
