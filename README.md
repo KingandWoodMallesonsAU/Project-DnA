@@ -40,9 +40,9 @@ The guiding principles on which we have based our smart contract architecture ca
 This repository contains a number of explanatory documents for our DnA contract architecture, as well as an example of how the architecture could be applied to a simple interest rate swap.  Specifically the repository contains the following:
 
 1. a ["BAU" interest rate swap confirmation](http://github.com/KingandWoodMallesonsAU/), for use as a comparison;
-2. a [smart contract confirmation](http://github.com/KingandWoodMallesonsAU/) containing Analogue Terms and constituting a record of the terms of the example DnA interest rate swap; 
-3. a series of [Digital Terms](http://github.com/KingandWoodMallesonsAU/) relating to the example DnA interest rate swap;
-4. a [sample library of IRS_Definitions](http://github.com/KingandWoodMallesonsAU/) housing certain of the functions used by each of the Digital Terms and the Analogue Terms when required; and
+2. a [smart contract confirmation](https://github.com/KingandWoodMallesonsAU/Project-DnA/blob/master/Project%20DnA%20Smart%20Contract%20Confirmation) containing Analogue Terms and constituting a record of the terms of the example DnA interest rate swap; 
+3. a series of [Digital Terms](https://github.com/KingandWoodMallesonsAU/Project-DnA/blob/master/Project%20DnA%20Digital%20Terms) relating to the example DnA interest rate swap;
+4. a [sample library of IRS_Definitions](https://github.com/KingandWoodMallesonsAU/Project-DnA/blob/master/Project%20DnA%20IRS_Definitions.md) housing certain of the functions used by each of the Digital Terms and the Analogue Terms when required; and
 5. [Diagrams](http://github.com/KingandWoodMallesonsAU/) modelled on Business Process and Modelling Notation setting out the operational flows of a traditional interest rate swap transaction, and how they would exist as a DnA Contract.
 
 ### 1. The "business as usual" interest rate swap confirmation
