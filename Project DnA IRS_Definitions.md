@@ -57,7 +57,7 @@ Note: This definition is an example of a function which contains both Digital Te
 >
 >(a) if "Compounding" is not specified for the Swap Transaction or that party, an amount calculated on a formula basis for that Payment Date or for the related Calculation Period as follows:
 >
->Floating Amount = Calculation Amount * Floating Rate + Spread * Floating Rate Day Count Fraction
+>Floating Amount = Calculation Amount * (Floating Rate + Spread) * Floating Rate Day Count Fraction
 >
 >(b) if "Compounding" is specified to be applicable to the Swap Transaction or that party and "Flat Compounding" is not specified, an amount equal to the sum of the Compounding Period Amounts for each of the Compounding Periods in the related Calculation Period; or
 >
